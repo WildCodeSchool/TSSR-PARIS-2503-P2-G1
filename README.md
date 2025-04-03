@@ -81,8 +81,91 @@ Il est responsable de la communication entre les membres de l'équipe et de la b
 
 Priscilla et Mohamed Mben Slim (Dev), Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
 
+## 7. Pseudo-code/Squelette des scripts  
+**Utilisateur (sur les machines distantes) :**  
+**Actions :**  
+
+Création de compte utilisateur  
+
+Changement de mot de passe  
+
+Suppression ou désactivation de compte utilisateur  
+
+Ajout/retrait de groupes  
+
+**Informations :**  
+
+Dernière connexion, date de modification du mot de passe  
+
+Liste des sessions ouvertes  
+
+Groupes d’appartenance, historique des commandes, permissions sur fichiers/dossiers  
+
+**Ordinateur Client (sur les machines distantes) :**  
+**Actions :**  
+
+Arrêt, redémarrage, verrouillage, mise à jour du système  
+
+Création, modification, suppression de répertoires  
+
+Exécution de script à distance, gestion du pare-feu, désinstallation de logiciels  
+
+**Informations :**  
+
+Version du système d'exploitation, partitions, espace disque  
+
+Liste des lecteurs, applications installées, services en cours d'exécution  
+
+## 8. Début du code shell bash  
+Voici un squelette de code Bash qui pourrait être utilisé pour administrer une machine Ubuntu à partir d’un serveur Debian :  
 
 
 
+#!/bin/bash  
+
+#Menu principal  
+echo "Choisissez une action :"  
+echo "1. Créer un utilisateur"  
+echo "2. Supprimer un utilisateur"  
+echo "3. Changer mot de passe"  
+echo "4. Voir les informations de l'utilisateur"  
+echo "5. Quitter"  
+read choice  
+
+case $choice in  
+  1)  
+    #Créer un utilisateur  
+    echo "Entrez le nom d'utilisateur:"  
+    read username  
+    sudo adduser $username  
+    ;;  
+  2)  
+    #Supprimer un utilisateur  
+    echo "Entrez le nom d'utilisateur à supprimer:"  
+    read username  
+    sudo deluser $username  
+    ;;  
+  3)  
+    #Changer le mot de passe  
+    echo "Entrez le nom d'utilisateur:"  
+    read username  
+    sudo passwd $username  
+    ;;  
+  4)  
+    #Afficher des informations sur l'utilisateur  
+    echo "Entrez le nom d'utilisateur:"  
+    read username  
+    lastlog -u $username  
+    ;;  
+  5)  
+    #Quitter  
+    exit 0  
+    ;;  
+  *)  
+    echo "Choix invalide."  
+    ;;  
+esac  
+
+## Conclusion  
 
 
