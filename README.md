@@ -81,172 +81,50 @@ Il est responsable de la communication entre les membres de l'équipe et de la b
 
 Priscilla et Mohamed Mben Slim (Dev), Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
 
-## 7. Pseudo-code/Squelette des scripts  
-**Utilisateur (sur les machines distantes) :**  
-**Actions :**  
+## 7. Pseudo-code/Squelette des scripts    
 
+**Utilisateur**  
+**Action**  
 Création de compte utilisateur  
-
 Changement de mot de passe  
+Suppression de compte utilisateur local  
+Désactivation de compte utilisateur local  
+Ajout à un groupe d'administration  
+Ajout à un groupe local  
+Sortie d’un groupe local    
 
-Suppression ou désactivation de compte utilisateur  
+**Information**  
+Date de dernière connexion d’un utilisateur  
+Date de dernière modification du mot de passe  
+Liste des sessions ouvertes par l'utilisateur  
+Groupe d’appartenance d’un utilisateur  
+Historique des commandes exécutées par l'utilisateur  
+Droits/permissions de l’utilisateur sur un dossier  
+Droits/permissions de l’utilisateur sur un fichier  
 
-Ajout/retrait de groupes  
+**Ordinateur Client**  
 
-**Informations :**  
+**Action**  
+Arrêt  
+Redémarrage  
+Verrouillage  
+Mise-à-jour du système  
+Création de répertoire  
+Modification de répertoire  
+Suppression de répertoire  
+Prise de main à distance (CLI)  
+Activation du pare-feu  
+Désactivation du pare-feu  
+Désinstallation de logiciel  
+Exécution de script sur la machine distante  
 
-Dernière connexion, date de modification du mot de passe  
-
-Liste des sessions ouvertes  
-
-Groupes d’appartenance, historique des commandes, permissions sur fichiers/dossiers  
-
-**Ordinateur Client (sur les machines distantes) :**  
-**Actions :**  
-
-Arrêt, redémarrage, verrouillage, mise à jour du système  
-
-Création, modification, suppression de répertoires  
-
-Exécution de script à distance, gestion du pare-feu, désinstallation de logiciels  
-
-**Informations :**  
-
-Version du système d'exploitation, partitions, espace disque  
-
-Liste des lecteurs, applications installées, services en cours d'exécution  
-
-## 8. Début du code shell bash  et PowerShell
-**Voici un squelette de code Bash qui pourrait être utilisé pour administrer une machine Ubuntu à partir d’un serveur Debian :** 
-
-#!/bin/bash  
-
-#Menu principal  
-echo "Choisissez une action :"  
-echo "1. Créer un utilisateur"  
-echo "2. Supprimer un utilisateur"  
-echo "3. Changer mot de passe"  
-echo "4. Voir les informations de l'utilisateur"  
-echo "5. Quitter"  
-read choice  
-
-case $choice in  
-  1)  
-    #Créer un utilisateur  
-    echo "Entrez le nom d'utilisateur:"  
-    read username  
-    sudo adduser $username  
-    ;;  
-  2)  
-    #Supprimer un utilisateur  
-    echo "Entrez le nom d'utilisateur à supprimer:"  
-    read username  
-    sudo deluser $username  
-    ;;  
-  3)  
-    #Changer le mot de passe  
-    echo "Entrez le nom d'utilisateur:"  
-    read username  
-    sudo passwd $username  
-    ;;  
-  4)  
-    #Afficher des informations sur l'utilisateur  
-    echo "Entrez le nom d'utilisateur:"  
-    read username  
-    lastlog -u $username  
-    ;;  
-  5)  
-    #Quitter  
-    exit 0  
-    ;;  
-  *)  
-    echo "Choix invalide."  
-    ;;  
-esac  
-
-**Voici un squelette de code PowerShell qui pourrait être utilisé pour administrer une machine Windows à partir d’un Windows Server :**
-
-function Show-MainMenu {
-    Clear-Host
-    Write-Host "========================="
-    Write-Host "      MENU PRINCIPAL     "
-    Write-Host "========================="
-    Write-Host "1. Cible : Ordinateur"
-    Write-Host "2. Cible : Utilisateur"
-    Write-Host "3. Quitter"
-    Write-Host "========================="
-    $choice = Read-Host "Choisissez une option"
-    
-    switch ($choice) {
-        1 { Show-ComputerMenu }
-        2 { Show-UserMenu }
-        3 { exit }
-        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-MainMenu }
-    }
-}
-
-function Show-UserMenu {
-    Clear-Host
-    Write-Host "--- Actions sur un utilisateur ---"
-    Write-Host "1. Création de compte utilisateur"
-    Write-Host "2. Changement de mot de passe"
-    Write-Host "3. Suppression de compte utilisateur local"
-    Write-Host "4. Informations sur l'utilisateur"
-    Write-Host "5. Retour au menu principal"
-    $choice = Read-Host "Choisissez une option"
-    
-    switch ($choice) {
-        1 { $user = Read-Host "Nom de l'utilisateur"; New-LocalUser -Name $user -NoPassword }
-        2 { $user = Read-Host "Nom de l'utilisateur"; Set-LocalUser -Name $user -Password (Read-Host -AsSecureString "Nouveau mot de passe") }
-        3 { $user = Read-Host "Nom de l'utilisateur"; Remove-LocalUser -Name $user }
-        4 { Show-UserInfoMenu }
-        5 { Show-MainMenu }
-        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-UserMenu }
-    }
-}
-
-function Show-UserInfoMenu {
-    Clear-Host
-    Write-Host "--- Informations sur un utilisateur ---"
-    Write-Host "1. Groupes d’appartenance"
-    Write-Host "2. Retour"
-    $choice = Read-Host "Choisissez une option"
-    
-    switch ($choice) {
-        1 { $user = Read-Host "Nom de l'utilisateur"; Get-LocalGroupMember -Group $user }
-        2 { Show-UserMenu }
-        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-UserInfoMenu }
-    }
-}
-
-function Show-ComputerMenu {
-    Clear-Host
-    Write-Host "--- Actions sur l'ordinateur ---"
-    Write-Host "1. Arrêt"
-    Write-Host "2. Redémarrage"
-    Write-Host "3. Informations sur l'ordinateur"
-    Write-Host "4. Retour au menu principal"
-    $choice = Read-Host "Choisissez une option"
-    
-    switch ($choice) {
-        1 { Stop-Computer -Force }
-        2 { Restart-Computer -Force }
-        3 { Show-ComputerInfoMenu }
-        4 { Show-MainMenu }
-        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-ComputerMenu }
-    }
-}
-
-function Show-ComputerInfoMenu {
-    Clear-Host
-    Write-Host "--- Informations sur l'ordinateur ---"
-    Get-ComputerInfo | Select-Object CsName, OsName, OsArchitecture, WindowsVersion
-    Read-Host "Appuyez sur Entrée pour continuer..."
-    Show-ComputerMenu
-}
-
-Show-MainMenu
-
-## Conclusion  
-
+**Information**  
+Version de l'OS  
+Nombre de disque  
+Partition (nombre, nom, FS, taille) par disque  
+Espace disque restant par partition/volume  
+Nom et espace disque d'un dossier (nom de dossier demandé)  
+Liste des lecteurs monté (disque, CD, etc.)  
+Liste des applications/paquets installées  
+Liste des services en cours d'execution  
 
