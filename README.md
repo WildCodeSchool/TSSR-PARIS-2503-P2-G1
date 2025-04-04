@@ -116,10 +116,8 @@ Version du système d'exploitation, partitions, espace disque
 
 Liste des lecteurs, applications installées, services en cours d'exécution  
 
-## 8. Début du code shell bash  
-Voici un squelette de code Bash qui pourrait être utilisé pour administrer une machine Ubuntu à partir d’un serveur Debian :  
-
-
+## 8. Début du code shell bash  et PowerShell
+**Voici un squelette de code Bash qui pourrait être utilisé pour administrer une machine Ubuntu à partir d’un serveur Debian :** 
 
 #!/bin/bash  
 
@@ -165,6 +163,89 @@ case $choice in
     echo "Choix invalide."  
     ;;  
 esac  
+
+**Voici un squelette de code PowerShell qui pourrait être utilisé pour administrer une machine Windows à partir d’un Windows Server :**
+
+function Show-MainMenu {
+    Clear-Host
+    Write-Host "========================="
+    Write-Host "      MENU PRINCIPAL     "
+    Write-Host "========================="
+    Write-Host "1. Cible : Ordinateur"
+    Write-Host "2. Cible : Utilisateur"
+    Write-Host "3. Quitter"
+    Write-Host "========================="
+    $choice = Read-Host "Choisissez une option"
+    
+    switch ($choice) {
+        1 { Show-ComputerMenu }
+        2 { Show-UserMenu }
+        3 { exit }
+        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-MainMenu }
+    }
+}
+
+function Show-UserMenu {
+    Clear-Host
+    Write-Host "--- Actions sur un utilisateur ---"
+    Write-Host "1. Création de compte utilisateur"
+    Write-Host "2. Changement de mot de passe"
+    Write-Host "3. Suppression de compte utilisateur local"
+    Write-Host "4. Informations sur l'utilisateur"
+    Write-Host "5. Retour au menu principal"
+    $choice = Read-Host "Choisissez une option"
+    
+    switch ($choice) {
+        1 { $user = Read-Host "Nom de l'utilisateur"; New-LocalUser -Name $user -NoPassword }
+        2 { $user = Read-Host "Nom de l'utilisateur"; Set-LocalUser -Name $user -Password (Read-Host -AsSecureString "Nouveau mot de passe") }
+        3 { $user = Read-Host "Nom de l'utilisateur"; Remove-LocalUser -Name $user }
+        4 { Show-UserInfoMenu }
+        5 { Show-MainMenu }
+        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-UserMenu }
+    }
+}
+
+function Show-UserInfoMenu {
+    Clear-Host
+    Write-Host "--- Informations sur un utilisateur ---"
+    Write-Host "1. Groupes d’appartenance"
+    Write-Host "2. Retour"
+    $choice = Read-Host "Choisissez une option"
+    
+    switch ($choice) {
+        1 { $user = Read-Host "Nom de l'utilisateur"; Get-LocalGroupMember -Group $user }
+        2 { Show-UserMenu }
+        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-UserInfoMenu }
+    }
+}
+
+function Show-ComputerMenu {
+    Clear-Host
+    Write-Host "--- Actions sur l'ordinateur ---"
+    Write-Host "1. Arrêt"
+    Write-Host "2. Redémarrage"
+    Write-Host "3. Informations sur l'ordinateur"
+    Write-Host "4. Retour au menu principal"
+    $choice = Read-Host "Choisissez une option"
+    
+    switch ($choice) {
+        1 { Stop-Computer -Force }
+        2 { Restart-Computer -Force }
+        3 { Show-ComputerInfoMenu }
+        4 { Show-MainMenu }
+        default { Write-Host "Option invalide !"; Start-Sleep -Seconds 1; Show-ComputerMenu }
+    }
+}
+
+function Show-ComputerInfoMenu {
+    Clear-Host
+    Write-Host "--- Informations sur l'ordinateur ---"
+    Get-ComputerInfo | Select-Object CsName, OsName, OsArchitecture, WindowsVersion
+    Read-Host "Appuyez sur Entrée pour continuer..."
+    Show-ComputerMenu
+}
+
+Show-MainMenu
 
 ## Conclusion  
 
