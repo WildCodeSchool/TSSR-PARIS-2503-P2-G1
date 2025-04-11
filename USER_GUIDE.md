@@ -11,9 +11,8 @@ Se connecter en SSH au client
 .*****/.sh  
 
 ### Étape 4 : Utiliser le menu interactif  
-Une fois lancé, le script affiche un menu simple avec plusieurs choix
-
-### Il suffit d’entrer un chiffre pour effectuer une action.   
+Une fois lancé, le script affiche un menu simple avec plusieurs choix,
+Il suffit d’entrer un chiffre pour effectuer une action.   
 
 ## Utilisation du script PowerShell (administration d’un client Windows)  
 ⚠Le script PowerShell est en cours de développement, mais voici les bases :  
