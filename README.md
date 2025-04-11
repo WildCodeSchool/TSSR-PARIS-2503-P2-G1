@@ -1,9 +1,8 @@
-# TSSR-PARIS-2503-P2-G1
-The scripting project
+## TSSR-PARIS-2503-P2-G1
 
-# Projet 2: Administration de Machines Distantes via Scripts Bash et PowerShell
+### The scripting project : Administration de Machines Distantes via Scripts Bash et PowerShell
 
-## 1. Présentation du Projet
+### 1. Présentation du Projet
 
 Ce projet vise à développer deux scripts permettant l'administration de machines distantes sur un réseau unique :
 
@@ -21,45 +20,44 @@ La collecte d'informations système (utilisateurs locaux, services, partitions, 
 
 
 
-## 2. Objectifs du Sprint 1
+### 2. Objectifs du Sprint 2
 
-**Analyse des besoins et définition des objectifs :** Comprendre les actions d'administration et les informations à collecter.
+===> Développer plusieurs scripts Bash avec différentes fonctionnalités d'administration.
 
-Installation et configuration des machines virtuelles sur Proxmox : Mettre en place les environnements serveurs et clients.
+===> Tester les scripts sur un vrai réseau entre deux machines virtuelles (Debian et Ubuntu).
 
-Mise en réseau des machines (clients et serveurs) : Assurer la communication entre le serveur et les clients.
+===> Lancer le développement du script PowerShell côté Windows.
 
-Structure du menu d'administration avec une navigation ergonomique : Concevoir un menu interactif pour naviguer dans les différentes actions et informations.
+===> Structurer et documenter tout le projet sur GitHub.
 
-Début du développement des scripts (Bash et PowerShell).
+===> Commencer à gérer les retours d’erreurs et problèmes de compatibilité.
 
-Planification de la documentation (README.md, INSTALL.md, USER_GUIDE.md).
+### 3. Travail déjà réalisé
 
-## 3. Travail déjà réalisé
+===> Mise en réseau de 2 machines : une Debian (serveur) et une Ubuntu (client) en réseau interne.
 
-Installation et configuration des machines virtuelles sur Proxmox : Les machines serveurs et clients ont été mises en place.
+===> Développement de 4 scripts Bash :  
+✅ 1 script fonctionne parfaitement  
+⚠️ 3 scripts rencontrent encore des bugs (chemins, commandes non reconnues ou permissions)  
 
-Mise en réseau des machines clients et serveurs.
+===> Menu interactif côté Bash en cours d’amélioration.  
 
-Conception de la structure du menu d'administration interactif: Un menu interactif avec navigation ergonomique a été conçu, permettant de choisir des actions à effectuer ou de rechercher des informations.
+===> Dépôt GitHub initialisé avec la structure de fichiers.  
 
-Premier jet des scripts d'administration (Bash et PowerShell) : Les scripts de base ont été créés pour exécuter certaines actions et collecter des informations.
 
-Initialisation des fichiers de documentation (README.md, INSTALL.md, USER_GUIDE.md) sur GitHub.
+### 4. Objectif du Sprint 3
 
-## 4. Ce qui reste à faire ( Sprint 2 et suivants)
+===> Corriger les erreurs dans les 3 scripts Bash restants.
 
-Finaliser les scripts avec toutes les fonctionnalités listées.
+===> Ajouter de nouvelles fonctionnalités (ex : logs, amélioration des menus).
 
-Effectuer des tests et corrections.
+===> Continuer le développement du script PowerShell.  
 
-Compléter la documentation utilisateur et administrateur.
+===> Finaliser une première version complète du projet.
 
-Optimiser la navigation dans les menus et sous-menus.
+===> Renforcer la documentation (README, INSTALL, USER_GUIDE).
 
-Intégrer des logs et des options de débogage.
-
-## 5. Plan de la documentation (README.md,INSTALL.md,USER_GUIDE.md)
+### 5. Documentation (README.md,INSTALL.md,USER_GUIDE.md)
 
 **README.md (Documentation générale) :** Présentation générale du projet : Décrire l'objectif du projet, la mise en place des machines virtuelles et des scripts d'administration.   
 **Objectifs finaux :** Détails sur l'administration des machines via Bash et PowerShell, la collecte d'informations, et la gestion des utilisateurs/ordinateurs.  
@@ -69,62 +67,32 @@ Intégrer des logs et des options de débogage.
 
 **USER_GUIDE.md (Documentation utilisateur) :** Manuel utilisateur avec explications des commandes.
 
-## 6. Organisation et rôles de l'équipe
+### 6. Organisation et rôles de l'équipe
 
 **Chaque membre est assigné à une partie du projet et assure le suivi des daily meetings:**
 
-Omar PO (Product Owner) de cette prémière semaine est le représentant du client. 
+**Mohamed Ben Slim (Product Owner)** de cette deuxième semaine est le représentant du client. 
 Il est responsable de la définition des besoins et de la priorisation des tâches. Il veille à ce que le projet réponde aux attentes du client.
 
-Mohamed Keita SM (Scrum Master) cette semaine est le garant de la bonne application de la méthode Scrum. 
-Il est responsable de la communication entre les membres de l'équipe et de la bonne réalisation des tâches.
+**Priscilla MANEDJI NGOUANA (Scrum Master)** cette semaine est garante de la bonne application de la méthode Scrum. 
+Elle est responsable de la communication entre les membres de l'équipe et de la bonne réalisation des tâches.
 
-Priscilla et Mohamed Mben Slim (Dev), Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
+**Mohamed KEITA et OMAR (Dev)**, Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
 
-## 7. Pseudo-code/Squelette des scripts    
+### 7. Problèmes rencontrés
 
-**Utilisateur**  
-**Action**  
-Création de compte utilisateur  
-Changement de mot de passe  
-Suppression de compte utilisateur local  
-Désactivation de compte utilisateur local  
-Ajout à un groupe d'administration  
-Ajout à un groupe local  
-Sortie d’un groupe local    
+Quelques scripts Bash ne s'exécutent pas correctement (erreurs de chemin, mauvaise détection etc.).
 
-**Information**  
-Date de dernière connexion d’un utilisateur  
-Date de dernière modification du mot de passe  
-Liste des sessions ouvertes par l'utilisateur  
-Groupe d’appartenance d’un utilisateur  
-Historique des commandes exécutées par l'utilisateur  
-Droits/permissions de l’utilisateur sur un dossier  
-Droits/permissions de l’utilisateur sur un fichier  
+Difficultés à faire fonctionner certains outils en SSH sur Ubuntu.
 
-**Ordinateur Client**  
+Manque de permissions sur certaines commandes systèmes.
 
-**Action**  
-Arrêt  
-Redémarrage  
-Verrouillage  
-Mise-à-jour du système  
-Création de répertoire  
-Modification de répertoire  
-Suppression de répertoire  
-Prise de main à distance (CLI)  
-Activation du pare-feu  
-Désactivation du pare-feu  
-Désinstallation de logiciel  
-Exécution de script sur la machine distante  
+Complexité de certaines commandes Bash pour un script interactif.
 
-**Information**  
-Version de l'OS  
-Nombre de disque  
-Partition (nombre, nom, FS, taille) par disque  
-Espace disque restant par partition/volume  
-Nom et espace disque d'un dossier (nom de dossier demandé)  
-Liste des lecteurs monté (disque, CD, etc.)  
-Liste des applications/paquets installées  
-Liste des services en cours d'execution  
+Nécessité de debug ligne par ligne.
+
+### Conclusion
+Le projet avance bien malgré quelques blocages techniques.
+Nous avons un environnement de test fonctionnel, un script Bash déjà opérationnel, et les bases sont posées pour le reste.
+L’objectif pour le sprint suivant est de stabiliser tous les scripts, avancer sur PowerShell et finaliser la documentation pour rendre le projet complet et présentable.
 
