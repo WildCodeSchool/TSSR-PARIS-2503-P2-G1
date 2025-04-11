@@ -1,14 +1,13 @@
 ## Utilisation du script Bash (administration d’un client Ubuntu depuis un serveur Debian)  
 
 ### Étape 1 :   
-Le script est nommé admin_client_ubuntu.sh   
-Avant toute chose, il faut donner les droits d’exécution au script via la commande:  
-chmod +x admin_client_ubuntu.sh  
+Script édité sur VS et enregistré sur le serveur
+Donner les droits d’exécution au script via la commande: chmod +x a*****.sh  
 
 ### Étape 2 :   
 
 ### Étape 3 : Lancer le script  
-./admin_client_ubuntu.sh  
+.*****/.sh  
 
 ### Étape 4 : Utiliser le menu interactif  
 Une fois lancé, le script affiche un menu simple avec plusieurs choix :  
