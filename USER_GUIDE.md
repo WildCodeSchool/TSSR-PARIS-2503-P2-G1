@@ -1,4 +1,4 @@
-## Utilisation du script Bash (administration d’un client Ubuntu depuis un serveur Debian)  
+## Utilisation du script Bash ( Ubuntu vers Ubuntu pour une première phase de test ) 
 
 ### Étape 1 :   
 Script édité sur VS et enregistré sur le serveur
