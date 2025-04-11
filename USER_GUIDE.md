@@ -2,25 +2,17 @@
 
 ### Étape 1 :   
 Script édité sur VS et enregistré sur le serveur
-Donner les droits d’exécution au script via la commande: chmod +x a*****.sh  
+Au préalable donner les droits d’exécution au script via la commande: chmod *****.sh  
 
-### Étape 2 :   
+### Étape 2 :  
+Se connecter en SSH au client 
 
 ### Étape 3 : Lancer le script  
 .*****/.sh  
 
 ### Étape 4 : Utiliser le menu interactif  
-Une fois lancé, le script affiche un menu simple avec plusieurs choix :  
-1.   
-2.   
-3.   
-4.   
-5.   
-6.   
-7.   
-8.   
-9. Quitter  
-10.   
+Une fois lancé, le script affiche un menu simple avec plusieurs choix
+
 ### Il suffit d’entrer un chiffre pour effectuer une action.   
 
 ## Utilisation du script PowerShell (administration d’un client Windows)  
