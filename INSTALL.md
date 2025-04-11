@@ -13,8 +13,7 @@ Avant d'exécuter les scripts, assurez-vous que votre environnement est correcte
   - **PowerShell :** Assurez-vous que PowerShell est installé et fonctionnel.
 - **Dépendances réseau:** Ip : 172.16.10.5, masque : 255.255.255.0
 - **Permissions :** Assurez-vous d'avoir les droits administratifs sur votre système pour installer certains paquets ou exécuter des scripts nécessitant des privilèges élevés.
-- 
--Connexion as distance en ssh.
+- Connexion as distance en ssh.
 
 
 ---
@@ -27,8 +26,7 @@ Avant d'exécuter les scripts, assurez-vous que votre environnement est correcte
 - **Dépendances réseau:** Ip : 172.16.10.10, masque : 255.255.255.0 
   - **Gestionnaire de paquets :** Utilisez `apt` (pour Debian/Ubuntu).
 - **Permissions :** Vous devrez peut-être exécuter certains scripts avec des privilèges superutilisateur (`sudo`) pour installer des paquets ou effectuer certaines actions.
-- 
-Connexion as distance en ssh.
+- Connexion as distance en ssh.
 
 ---
 
