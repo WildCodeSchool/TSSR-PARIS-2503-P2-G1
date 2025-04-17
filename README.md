@@ -20,42 +20,64 @@ La collecte d'informations système (utilisateurs locaux, services, partitions, 
 
 
 
-### 2. Objectifs du Sprint 2
+### 2. Objectifs du Sprint 3  
 
-===> Développer plusieurs scripts Bash avec différentes fonctionnalités d'administration.
+Finaliser le développement des scripts Bash pour administrer des machines Ubuntu à distance via SSH depuis un serveur Debian.  
 
-===> Tester les scripts sur un vrai réseau entre deux machines virtuelles (Debian et Ubuntu).
+Tester les scripts Bash sur des machines physiques et des machines virtuelles Ubuntu.  
 
-===> Lancer le développement du script PowerShell côté Windows.
+Commencer le développement des scripts PowerShell pour l'administration de machines Windows.  
 
-===> Structurer et documenter tout le projet sur GitHub.
+Mettre à jour la documentation du projet, notamment le fichier README.md, INSTALL.md et USER_GUIDE.md. 
 
-===> Commencer à gérer les retours d’erreurs et problèmes de compatibilité.
+Préparer une démonstration du Sprint 3 avec :
+
+Les scripts Bash finalisés.
+
+Une première version fonctionnelle des scripts PowerShell, en test sur des machines Windows hors de l'environnement Proxmox.
 
 ### 3. Travail déjà réalisé
 
-===> Mise en réseau de 2 machines : une Debian (serveur) et une Ubuntu (client) en réseau interne.
+**Scripts Bash**
 
-===> Développement de 4 scripts Bash :  
-✅ 1 script fonctionne parfaitement  
-⚠️ 3 scripts rencontrent encore des bugs (chemins, commandes non reconnues ou permissions)  
+Tous les scripts Bash sont finalisés.
 
-===> Menu interactif côté Bash en cours d’amélioration.  
+Les scripts ont été testés avec succès entre plusieurs machines physiques et une machine virtuelle Ubuntu via SSH.
 
-===> Dépôt GitHub initialisé avec la structure de fichiers.  
+Ils permettent :
 
+L'exécution de commandes d'administration (création et suppression d'utilisateurs, gestion des groupes, gestion des services).
 
-### 4. Objectif du Sprint 3
+La collecte d'informations système (liste des utilisateurs locaux, état des services, partitions disque, etc.).
 
-===> Corriger les erreurs dans les 3 scripts Bash restants.
+Les scripts sont organisés dans le dépôt GitHub, dans le dossier Script.
 
-===> Ajouter de nouvelles fonctionnalités (ex : logs, amélioration des menus).
+**Scripts PowerShell**
 
-===> Continuer le développement du script PowerShell.  
+Le développement des scripts PowerShell a débuté.
 
-===> Finaliser une première version complète du projet.
+Certaines fonctionnalités d'administration de base sont déjà opérationnelles.
 
-===> Renforcer la documentation (README, INSTALL, USER_GUIDE).
+Ces scripts seront utilisés pour la démonstration sur des machines Windows (hors Proxmox) pendant la présentation du Sprint 3.
+
+## Documentation
+
+Le fichier README.md a été mis à jour pour refléter l'état actuel du projet et des scripts disponibles.
+
+### 4. Objectif du Sprint 4
+
+Finaliser tous les scripts PowerShell pour l'administration de machines Windows.
+
+Finaliser la configuration de WinRM sur les machines virtuelles sous Proxmox pour permettre la démonstration de l'administration distante.
+
+Compléter et finaliser toute la documentation du projet (incluant la description détaillée des scripts, instructions d'installation et d'utilisation).
+
+Finaliser la création et l'intégration d'un fichier de journalisation log_evt.log :
+
+- Pour les actions réalisées sur les machines Linux.
+
+- Pour les actions réalisées sur les machines Windows.
+
 
 ### 5. Documentation (README.md,INSTALL.md,USER_GUIDE.md)
 
@@ -71,25 +93,25 @@ La collecte d'informations système (utilisateurs locaux, services, partitions, 
 
 **Chaque membre est assigné à une partie du projet et assure le suivi des daily meetings:**
 
-**Mohamed Ben Slim (Product Owner)** de cette deuxième semaine est le représentant du client. 
+**Mohamed Keita (Product Owner)** de cette semaine est le représentant du client. 
 Il est responsable de la définition des besoins et de la priorisation des tâches. Il veille à ce que le projet réponde aux attentes du client.
 
-**Priscilla MANEDJI NGOUANA (Scrum Master)** cette semaine est garante de la bonne application de la méthode Scrum. 
-Elle est responsable de la communication entre les membres de l'équipe et de la bonne réalisation des tâches.
+**Omar (Scrum Master)** cette semaine est garant de la bonne application de la méthode Scrum. 
+Il est responsable de la communication entre les membres de l'équipe et de la bonne réalisation des tâches.
 
-**Mohamed KEITA et OMAR (Dev)**, Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
+**Mohamed Mben et Priscilla Manedji (Dev)**, Développeurs qui collaborent avec le PO et le Scrum Master pour mettre en œuvre les fonctionnalités du projet, en particulier le développement des scripts et la gestion de la documentation.
 
 ### 7. Problèmes rencontrés
 
-Quelques scripts Bash ne s'exécutent pas correctement (erreurs de chemin, mauvaise détection etc.).
+Certains scripts PowerShell ne s'exécutent pas correctement.
 
-Difficultés à faire fonctionner certains outils en SSH sur Ubuntu.
+Difficultés à faire fonctionner certains outils en WinRM.
 
 Manque de permissions sur certaines commandes systèmes.
 
-Complexité de certaines commandes Bash pour un script interactif.
+Complexité de certaines commandes PowerShell pour un script interactif.
 
-Nécessité de debug ligne par ligne.
+Nécessité de debuggerligne par ligne.
 
 ### Conclusion
 Le projet avance bien malgré quelques blocages techniques.
