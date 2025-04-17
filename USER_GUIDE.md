@@ -1,35 +1,64 @@
-## Utilisation du script Bash ( Ubuntu vers Ubuntu pour une première phase de test ) 
 
-### Étape 1 :   
-Script édité sur VS et enregistré sur le serveur
-Au préalable donner les droits d’exécution au script via la commande: chmod *****.sh  
+# 📚 Guide d'utilisation des Scripts
 
-### Étape 2 :  
-Se connecter en SSH au client 
+---
 
-### Étape 3 : Lancer le script  
-.*****/.sh  
+## 1. Utilisation du script Bash (Debian → Ubuntu)
 
-### Étape 4 : Utiliser le menu interactif  
-Une fois lancé, le script affiche un menu simple avec plusieurs choix,
-Il suffit d’entrer un chiffre pour effectuer une action.   
+### Étape 1 : Préparation du script
+- Le script est édité via Visual Studio Code et enregistré sur le serveur.
+- Donner les droits d’exécution au script avec la commande :
+  ```bash
+  chmod +x nom_du_script.sh
+  ```
 
-## Utilisation du script PowerShell (administration d’un client Windows)  
-⚠Le script PowerShell est en cours de développement, mais voici les bases :  
+### Étape 2 : Connexion SSH
+- Se connecter au client Ubuntu via SSH.
 
-### Étape 1 : Activer le PowerShell Remoting sur le client  
-Dans une console PowerShell, faire cette commande :  
-Enable-PSRemoting -Force  
+### Étape 3 : Lancement du script
+- Exécuter le script en tapant :
+  ```bash
+  ./nom_du_script.sh
+  ```
 
-### Étape 2 : Lancer la commande à distance depuis le serveur Windows  
-.\admin_client_windows.ps1  
-Ce script affichera des informations sur le système Windows distant (nom de l’OS, utilisateurs, services actifs…).  
+### Étape 4 : Navigation dans le menu interactif
+- Le script affichera un menu simple proposant plusieurs options.
+- Entrer le numéro correspondant pour exécuter l'action souhaitée.
 
-### En cas de problème  
-Si la connexion SSH échoue : vérifier l'adresse IP, que le serveur a bien la clé SSH du client  
+---
 
-Si le script ne s’exécute pas : ajouter set -x en début de script pour le mode debug  
+## 2. Utilisation du script PowerShell (Administration d'un client Windows)
 
-Pour PowerShell, vérifier que WinRM est activé, et que le pare-feu autorise les connexions  
+⚠️ *Le script PowerShell est en cours de développement, voici les étapes pour l'utiliser :*
 
+### Étape 1 : Activer le PowerShell Remoting sur le client
+- Ouvrir une console PowerShell en mode administrateur et exécuter :
+  ```powershell
+  Enable-PSRemoting -Force
+  ```
 
+### Étape 2 : Exécuter le script depuis le serveur Windows
+- Depuis votre session PowerShell, lancer :
+  ```powershell
+  .\admin_client_windows.ps1
+  ```
+- Le script affichera diverses informations sur le système distant (nom de l'OS, utilisateurs, services actifs, etc.).
+
+---
+
+## 3. Dépannage
+
+- **Problème de connexion SSH :**  
+  - Vérifier l'adresse IP et la clé SSH sur le serveur.
+
+- **Le script Bash ne s'exécute pas :**  
+  - Ajouter `set -x` en début du script pour activer le mode debug.
+
+- **Problème côté PowerShell :**  
+  - Vérifier que WinRM est activé.
+  - S'assurer que le pare-feu Windows autorise les connexions distantes.
+
+---
+
+# ✅ Remarque
+Ce guide sera mis à jour au fur et à mesure de l'avancée du projet, notamment avec la finalisation du script PowerShell.
