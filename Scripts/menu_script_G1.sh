@@ -11,15 +11,15 @@ read -p "Entrez votre choix : " choix
 
 case $choix in
     1)
-        echo "Lancement du script de mise à jour du système..."
+        echo "Lancement du script de mise à jour du système"
         ./maj.sh  # Assurez-vous que ce script existe et est exécutable
         ;;
     2)
-        echo "Lancement du script de gestion des répertoires..."
+        echo "Lancement du script de gestion des répertoires"
         ./Gestion_repertoire.sh  # Assurez-vous que ce script existe et est exécutable
         ;;
     3)
-        echo "Lancement du script de gestion du pare-feu..."
+        echo "Lancement du script de gestion de groupe"
         ./Gestion_groupe.sh  # Assurez-vous que ce script existe et est exécutable
         ;;
     4)
