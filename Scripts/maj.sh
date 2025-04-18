@@ -6,15 +6,9 @@
 read -p "Entrez l'adresse IP de la machine distante : " ip
 read -p "Entrez le nom d'utilisateur distant : " user
 
-# Vérifier les privilèges sudo avec pseudo-terminal
-ssh -t "$user@$ip" "sudo -v"
-if [ $? -ne 0 ]; then
-    echo "L'utilisateur $user n'a pas les privilèges sudo sur la machine distante."
-    exit 1
-fi
-
 # Boucle principale
-while true; do
+while true
+do
     echo
     echo "Menu - Maintenance système sur $ip"
     echo "1. Mettre à jour la liste des paquets (apt update)"

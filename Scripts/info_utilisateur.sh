@@ -5,7 +5,8 @@ read -p "Entrez l'adresse IP de la machine distante : " ip
 read -p "Entrez le nom d'utilisateur distant : " user
 
 # Menu principal
-while true; do
+while true
+do
     echo
     echo "Choisissez une option :"
     echo "1. Afficher la date de dernière connexion de l'utilisateur"
@@ -30,9 +31,6 @@ while true; do
         4)
             echo "Fin du script."
             break
-            ;;
-        *)
-            echo "Choix invalide. Veuillez choisir une option entre 1 et 4."
             ;;
     esac
 done
