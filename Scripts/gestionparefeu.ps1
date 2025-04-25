@@ -50,6 +50,7 @@ while ($true) {
 
         default {
             Write-Host "Option invalide."
+            break
         }
     }
 }
