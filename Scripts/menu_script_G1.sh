@@ -12,20 +12,26 @@ read -p "Entrez votre choix : " choix
 case $choix in
     1)
         echo "Lancement du script de mise à jour du système"
-        ./maj.sh  # Assurez-vous que ce script existe et est exécutable
+        ./maj.sh 
         ;;
     2)
         echo "Lancement du script de gestion des répertoires"
-        ./Gestion_repertoire.sh  # Assurez-vous que ce script existe et est exécutable
+        ./Gestion_repertoire.sh  
         ;;
     3)
         echo "Lancement du script de gestion de groupe"
-        ./Gestion_groupe.sh  # Assurez-vous que ce script existe et est exécutable
+        ./Gestion_groupe.sh  
         ;;
+
     4)
+        echo "Lancement du script de gestion utilisateur"
+        ./Gestion_utilisateur.sh  
+    5)
         echo "Sortie du script. À bientôt !"
         exit 0
         ;;
+    
+
     *)
         echo "Choix invalide. Veuillez réessayer."
         ;;
