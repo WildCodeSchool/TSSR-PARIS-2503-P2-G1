@@ -27,38 +27,61 @@
 
 ---
 
-## 2. Utilisation du script PowerShell (Administration d'un client Windows)
+## 2. Utilisation du script powershell (windows server 2022 → windows 11)
 
-⚠️ *Le script PowerShell est en cours de développement, voici les étapes pour l'utiliser :*
+Ce guide explique comment utiliser le script `gestion_des_groupes.ps1` que nous avons choisi comme exemple pour gérer les groupes d'utilisateurs localement ou à distance avec WinRM.
 
-### Étape 1 : Activer le PowerShell Remoting sur le client
-- Ouvrir une console PowerShell en mode administrateur et exécuter :
-  ```powershell
-  Enable-PSRemoting -Force
-  ```
 
-### Étape 2 : Exécuter le script depuis le serveur Windows
-- Depuis votre session PowerShell, lancer :
-  ```powershell
-  .\admin_client_windows.ps1
-  ```
-- Le script affichera diverses informations sur le système distant (nom de l'OS, utilisateurs, services actifs, etc.).
+### 1. Lancer le script
+
+Depuis PowerShell (en tant qu'administrateur), accédez au répertoire du script, puis exécutez :
+```powershell
+.\gestion_des_groupes.ps1
+```
+
+### 2. Choix du mode
+
+Une invite vous proposera :
+```
+Gérer un système distant via WinRM ? (o/n)
+```
+- `o` pour utiliser une machine distante (WinRM doit être configuré sur les deux machines).
+- `n` pour gérer localement.
+
+### 3. Menu de gestion
+Une fois lancé, le script propose ce menu :
+```
+1. Ajouter au groupe Administrateurs
+2. Ajouter à un groupe local
+3. Retirer d'un groupe local
+4. Quitter
+```
+Saisissez le numéro correspondant à votre choix, puis suivez les invites (nom de l'utilisateur et du groupe).
 
 ---
 
-## 3. Dépannage
+## 📃 FAQ - Questions Fréquemment Posées
 
-- **Problème de connexion SSH :**  
-  - Vérifier l'adresse IP et la clé SSH sur le serveur.
+### ❓ Le script me retourne "Access is denied", que faire ?
+- Assurez-vous que l'utilisateur distant est membre du groupe `Remote Management Users`.
+- Activez `AllowUnencrypted` et `Basic Authentication` sur le **serveur** et le **client**.
 
-- **Le script Bash ne s'exécute pas :**  
-  - Ajouter `set -x` en début du script pour activer le mode debug.
+### ❓ Le groupe "Remote Management Users" est introuvable ?
+- Il peut apparaître localement avec le nom "Utilisateurs de gestion à distance" en français. Utilisez ce nom avec la commande `net localgroup`.
 
-- **Problème côté PowerShell :**  
-  - Vérifier que WinRM est activé.
-  - S'assurer que le pare-feu Windows autorise les connexions distantes.
+### ❓ "The WinRM client cannot process the request..."
+- Cela signifie souvent que `AllowUnencrypted` est à `false` sur le client. Utilisez :
+  ```powershell
+  Set-Item -Path WSMan:\localhost\Client\AllowUnencrypted -Value $true
+  ```
 
----
+### ❓ Comment tester la connexion ?
+- Utilisez `Test-WSMan -ComputerName <IP>` pour vérifier la communication.
 
-# ✅ Remarque
-Ce guide sera mis à jour au fur et à mesure de l'avancée du projet, notamment avec la finalisation du script PowerShell.
+### ❓ Comment exécuter une commande distante simple ?
+- Exemple :
+  ```powershell
+  Invoke-Command -ComputerName <IP> -Credential (Get-Credential) -Authentication Basic -ScriptBlock { hostname }
+  ```
+
+
