@@ -15,7 +15,7 @@ function Show-Menu {
 
 do {
     Show-Menu
-    $choix = Read-Host "Choisissez une option (1-7)"
+    $choix = Read-Host "Choisissez une option (1-9)"
 
     switch ($choix) {
         "1" { .\Etat_ordi.PS1 }
@@ -35,9 +35,9 @@ do {
         }
     }
 
-    if ($choix -ne "7") {
+    if ($choix -ne "9") {
         Write-Host "`nAppuyez sur Entrée pour revenir au menu..."
         [void][System.Console]::ReadLine()
     }
 
-} while ($choix -ne "7")
+} while ($choix -ne "9")
