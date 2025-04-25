@@ -9,7 +9,8 @@ function Show-Menu {
     Write-Host "5) Gestion des répertoires"
     Write-Host "6) Mise à jour du système"
     Write-Host "7) information système"
-    Write-Host "8) Quitter`n"
+    Write-Host "8) Informations sur l'utilisateur"
+    Write-Host "9) Quitter`n"
 }
 
 do {
@@ -24,7 +25,8 @@ do {
         "5" { .\gestionrepertoire.ps1 }
         "6" { .\maj.ps1 }
         "7" { .\infosysteme_disque.ps1 }
-        "8" {
+        "8" { .\infoutilisateur.ps1 }
+        "9" {
             Write-Host "Fin du script" -ForegroundColor Green
             break
         }
