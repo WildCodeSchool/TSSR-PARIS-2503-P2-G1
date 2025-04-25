@@ -8,7 +8,8 @@ function Show-Menu {
     Write-Host "4) Gestion du pare-feu"
     Write-Host "5) Gestion des répertoires"
     Write-Host "6) Mise à jour du système"
-    Write-Host "7) Quitter`n"
+    Write-Host "7) information système"
+    Write-Host "8) Quitter`n"
 }
 
 do {
@@ -22,7 +23,8 @@ do {
         "4" { .\gestionparefeu.ps1 }
         "5" { .\gestionrepertoire.ps1 }
         "6" { .\maj.ps1 }
-        "7" {
+        "7" { .\infosysteme_disque.ps1 }
+        "8" {
             Write-Host "Fin du script" -ForegroundColor Green
             break
         }
