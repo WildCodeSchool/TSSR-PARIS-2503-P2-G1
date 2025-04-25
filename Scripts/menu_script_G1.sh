@@ -25,9 +25,14 @@ case $choix in
 
     4)
         echo "Lancement du script de gestion utilisateur"
-        ./Gestion_utilisateur.sh  
+        ./Gestion_utilisateur.sh 
+        ;;
     5)
-        echo "Sortie du script. À bientôt !"
+        echo "Lancement du script de gestion parefeu"
+        ./Gestion_parefeu.sh 
+        ;;
+    6)
+        echo "Fin du script"
         exit 0
         ;;
     
