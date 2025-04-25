@@ -5,7 +5,9 @@ echo "Choisissez un script à exécuter :"
 echo "1. Script de mise à jour du système"
 echo "2. Script de gestion des répertoires"
 echo "3. Script de gestion de groupe"
-echo "4. Quitter"
+echo "4. Script de gestion utilisateur"
+echo "5. Script de gestion parefeu"
+echo "6. Quitter"
 
 read -p "Entrez votre choix : " choix
 
@@ -32,7 +34,7 @@ case $choix in
         ./Gestion_parefeu.sh 
         ;;
     6)
-        echo "Fin du script"
+        echo "Fin du script"./
         exit 0
         ;;
     
