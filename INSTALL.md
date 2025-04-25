@@ -31,6 +31,64 @@ Avant d'exécuter les scripts, assurez-vous que votre environnement est correcte
 - **Permissions :** Droits administratifs requis pour installer des modules ou exécuter des scripts élevés.
 - **Connexion distante :** SSH activé.
 
+  # ⚙️ Installation & Configuration de WinRM
+
+Ce guide décrit les étapes nécessaires pour configurer WinRM sur deux machines (client et serveur) afin de permettre l'exécution de commandes PowerShell à distance.
+
+## 🔧 Configuration côté Serveur (Machine à administrer)
+
+1. **Activer WinRM** :
+   ```powershell
+   Enable-PSRemoting -Force
+   ```
+
+2. **Autoriser l'authentification de base (Basic)** :
+   ```powershell
+   Set-Item -Path WSMan:\localhost\Service\Auth\Basic -Value $true
+   ```
+3. **Changer le profil réseau en Privé** 
+
+    Get-NetConnectionProfile  
+
+    Note le Name de l’interface (souvent "Réseau non identifié").  
+
+    Puis exécute :  
+
+    Set-NetConnectionProfile -InterfaceAlias "Ethernet" -NetworkCategory Private  
+
+      (⚠️ Remplace "Ethernet" par l’alias que tu as vu à l’étape précédente.)  
+  
+
+4. **Ajouter l’utilisateur distant au groupe `Remote Management Users`** :
+   ```powershell
+   net localgroup "Remote Management Users" NOM_UTILISATEUR /add
+   ```
+
+5. **Vérifier si WinRM répond** :
+   ```powershell
+   Test-WSMan
+   ```
+
+---
+
+## 💻 Configuration côté Client (Machine d’administration)
+
+1. **Autoriser le trafic non chiffré** :
+   ```powershell
+   Set-Item -Path WSMan:\localhost\Client\AllowUnencrypted -Value $true
+   ```
+
+2. **Tester la connectivité** avec le serveur :
+   ```powershell
+   Test-WSMan -ComputerName <IP_ou_Nom_Du_Serveur>
+   ```
+
+---
+
+> 📜 Remarque : Assurez-vous que le **port 5985** (HTTP WinRM) est ouvert sur le pare-feu si les machines ne sont pas sur le même réseau local.
+
+
+
 ---
 
 ## ❓ FAQ
