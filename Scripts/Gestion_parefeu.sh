@@ -1,6 +1,10 @@
-#!/bin/bash# Demander l'IP et l'utilisateur une seule fois
+#!/bin/bash
+
+# Demander l'IP et l'utilisateur une seule fois
 read -p "Entrez l'adresse IP de la machine distante : " ip
-read -p "Entrez le nom d'utilisateur distant : " user# Boucle principale
+read -p "Entrez le nom d'utilisateur distant : " user
+
+# Boucle principale
 while true; do
     echo
     echo "Menu - Gestion du Pare-feu sur $ip"
@@ -8,7 +12,9 @@ while true; do
     echo "2) Désactiver le pare-feu"
     echo "3) Afficher les règles"
     echo "4) Quitter"
-    read -p "Choisissez une option : " choix    case $choix in
+    read -p "Choisissez une option : " choix
+
+    case $choix in
         1)
             echo "Activation du pare-feu sur $ip..."
             ssh -t "$user@$ip" "
@@ -39,9 +45,6 @@ while true; do
         4)
             echo "Fin du script."
             exit 0
-            ;;
-        *)
-            echo "Option invalide. Choisissez entre 1 et 4."
             ;;
     esac
 done
